@@ -1,0 +1,284 @@
+import speech_recognition as sr
+import pyttsx3
+import pyjokes
+import os
+import webbrowser
+import datetime
+import calendar
+
+engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0].id)
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+    
+    def wishMe():
+    	hour = int(datetime.datetime.now().hour)
+    	if hour>= 0 and hour<12:
+    		speak("Good Morning Sir !")
+
+    	elif hour>= 12 and hour<18:
+    		speak("Good Afternoon Sir !")
+
+    	else:
+    		speak("Good Evening Sir !")
+
+    	assname =("Artificial Intelligence Voice Assistant")
+    	speak("I am your ")
+    	speak(assname)
+    
+r=sr.Recognizer()
+with sr.Microphone() as source:
+    print("i am your Artificial Intelligence Voice Assistant. how can i help you......")
+    speak('i am your Artificial Inteelligence Voice Assistant, how can i help you')
+    audio=r.listen(source)
+
+    try:
+        command=r.recognize_google(audio)
+        command = command.lower()
+        print('you said :{}'.format(command))
+    except:
+        print("sorry")
+
+def today_date():
+    now = datetime.datetime.now()
+    date_now = datetime.datetime.today()
+    week_now = calendar.day_name[date_now.weekday()]
+    month_now = now.month
+    year_now =now.year
+    day_now = now.day
+    months = [
+        "January","February","March","April","May",
+        "June","July","August","September","October","November","December"
+    ]
+    ordinals = [
+        "1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th",
+        "11th","12th","13th","14th","15th","16th","17th","18th","19th","20th",
+        "21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"
+    ]
+    return f'Today is {week_now},{ordinals[day_now - 1]}, {months[month_now - 1]}, {year_now}.'
+
+def cmd():
+    if 'hello' in command:
+        print("hello sir,i am your assistant Artificial Intelligence Voice Assitant")
+        speak('hello sir,i am your assistant Artificial Intelligence Voice Assitant')
+
+    elif 'hi' in command:
+        print("hello sir,i am your assistant")
+        speak('hello sir,i am your assistant')
+
+    elif 'joke' in command:
+        joke = pyjokes.get_joke()
+        print(joke)
+        speak(joke)
+
+    elif 'chrome' in command:
+        print('Opening google chrome.')
+        speak('opening google chrome.')
+        os.startfile(r'C:\Program Files\Google\Chrome\Application\chrome.exe')
+
+    elif 'word' in command:
+        print('Opening word.')
+        speak('opening word.')
+        os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk')
+
+    elif 'power point' in command:
+        print('Opening power point.')
+        speak('opening power point.')
+        os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk')
+
+    elif 'excel' in command:
+        print('Opening excel .')
+        speak('opening excel.')
+        os.startfile(r'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk')
+
+    # elif '' in command:
+    #     print('Opening .')
+    #     speak('opening .')
+    #     os.startfile('')
+    #
+    # elif '' in command:
+    #     print('Opening .')
+    #     speak('opening .')
+    #     os.startfile('')
+    #
+    # elif '' in command:
+    #     print('Opening .')
+    #     speak('opening .')
+    #     os.startfile('')
+    #
+    # elif '' in command:
+    #     print('Opening .')
+    #     speak('opening .')
+    #     os.startfile('')
+
+    elif 'youtube' in command:
+        print('Opening youtube.')
+        speak('Opening youtube.')
+        webbrowser.open("https://youtube.com/")
+
+    elif 'amazon' in command:
+        print("opening amazon.")
+        speak("opening amazon")
+        webbrowser.open("https://www.amazon.in")
+
+    elif 'myntra' in command:
+        print("Opening Myntra.")
+        speak("Opening Myntra")
+        webbrowser.open("https://www.myntra.com")
+
+    elif 'flipkart' in command:
+        print("Opening flipkart.")
+        speak("Opening flipkart.")
+        webbrowser.open("https://www.flipkart.com")
+
+    elif 'facebook' in command:
+        print('Opening facebook.')
+        speak('Opening facebook.')
+        webbrowser.open("https://facebook.com/")
+
+    elif 'hotstar' in command:
+        print("Opening hotstar")
+        speak("Opening hotstar")
+        webbrowser.open("https://www.hotstar.com/in")
+
+    elif 'netflix' in command:
+        print("Opening Netflix.")
+        speak("opening netflix")
+        webbrowser.open("https://www.netflix.com")
+
+    elif 'prime' in command:
+        print("Opening Amazon Prime")
+        speak("Opening Amazon prime")
+        webbrowser.open("https://www.primevideo.com")
+
+    elif 'irctc' in command:
+        print("Opening IRCTC")
+        speak("Opening IRCTC")
+        webbrowser.open("https://www.irctc.co.in")
+
+    elif 'duo' in command:
+        print("Opening google duo.")
+        speak("Opening google duo")
+        webbrowser.open("https://duo.google.com/about")
+
+    elif 'google' in command:
+        print('Opening google.')
+        speak('Opening google.')
+        webbrowser.open("https://google.com")
+
+    elif 'ajio' in command:
+        print('Opening ajio.')
+        speak('Opening ajio.')
+        webbrowser.open("https://www.ajio.com/shop/sale?utm=a62d1dd7d8846cc7637b6c3f75a31c46&track=1&pt=2")
+
+    elif 'whatsapp' in command:
+        print('Opening whatsapp.')
+        speak('Opening whatsapp.')
+        webbrowser.open("https://web.whatsapp.com/")
+
+    elif 'spotify' in command:
+        print('Opening spotify.')
+        speak('Opening spotify.')
+        webbrowser.open("https://www.spotify.com/in-en/free/?utm_source=in-en_brand_contextual_text&utm_medium=paidsearch&utm_campaign=alwayson_asia_in_premiumbusiness_core_brand+contextual-desktop+text+exact+in-en+google&ds_rl=1270915&gclsrc=ds&gclsrc=ds")
+
+    elif 'gaana' in command or 'music' in command:
+        print('Opening music.')
+        speak('Opening music.')
+        webbrowser.open("https://gaana.com/")
+
+    elif 'jiosaavan' in command:
+        print('Opening jiosaavan.')
+        speak('Opening jiosaavan.')
+        webbrowser.open("https://www.jiosaavn.com/")
+
+    elif 'ibomma' in command:
+        print('Opening ibomma.')
+        speak('Opening ibomma.')
+        webbrowser.open("https://ww13.ibomma.bar/telugu-movies/")
+
+    elif 'instagram' in command:
+        print('Opening instagram.')
+        speak('Opening instagram.')
+        webbrowser.open("https://www.instagram.com/?hl=en")
+
+    elif 'gmail' in command:
+        print('Opening gmail.')
+        speak('Opening gmail.')
+        webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
+
+    elif 'twitter' in command:
+        print('Opening twitter.')
+        speak('Opening twitter.')
+        webbrowser.open("https://twitter.com/i/flow/login")
+
+    elif 'maps' in command:
+        print('Opening maps.')
+        speak('Opening maps.')
+        webbrowser.open("https://www.google.com/maps/@12.9069803,80.1540117,15z")
+
+    elif 'swiggy' in command:
+        print('Opening swiggy.')
+        speak('Opening swiggy.')
+        webbrowser.open("https://www.swiggy.com/")
+
+    elif 'zomato' in command:
+        print('Opening zomato.')
+        speak('Opening zomato.')
+        webbrowser.open("https://www.zomato.com/")
+
+    elif 'dominos' in command:
+        print('Opening dominos.')
+        speak('Opening dominos.')
+        webbrowser.open("https://pizzaonline.dominos.co.in/?src=google_sem_brand&utm_source=google&utm_medium=cpc&utm_campaign=Brand%20-%20Pan%20India%20-%20Desktop%20-%20Exact%20-%202016%20-%20[S]&utm_term=[domins]")
+
+    elif 'rapido' in command:
+        print('Opening rapido.')
+        speak('Opening rapido.')
+        webbrowser.open("https://www.rapido.bike/")
+
+    elif 'ola' in command:
+        print('Opening ola.')
+        speak('Opening ola.')
+        webbrowser.open("https://www.olacabs.com/")
+
+    elif 'uber' in command:
+        print('Opening uber.')
+        speak('Opening uber.')
+        webbrowser.open("https://auth.uber.com/login/?breeze_local_zone=phx5&next_url=https%3A%2F%2Fm.uber.com%2F&state=uYYvjoIHSa86G7wJpn7biYWlNn3tI1pRqnK7P5MwOwE%3D")
+
+    elif 'search' in command:
+        ind = command.split().index("search")
+        search = command.split()[ind + 1:]
+        webbrowser.open("https://www.google.com/search?q=" + " + ".join(search))
+        speak('This are the results.')
+
+    elif 'time' in command:
+        time = datetime.datetime.now().strftime('%H : %M')
+        print(time)
+        speak('Current time is ' + time)
+
+    elif "date" in command or "day" in command or "month" in command:
+        get_today = today_date()
+        print(get_today)
+        speak(get_today)
+
+    elif 'get male voice' in command:
+        voices = engine.getProperty('voices')
+        engine.setProperty('voice', voices[0].id)
+        print("Now I am your assistant")
+        speak("Now i am your assistant")
+
+    elif 'get female voice' in command:
+        voices = engine.getProperty('voices')
+        engine.setProperty('voice', voices[1].id)
+        print("Now I am your assistant")
+        speak("Now i am your assistant")
+
+    else:
+        print("sorry sir")
+        speak('sorry sir ,out of search')
+
+cmd()
